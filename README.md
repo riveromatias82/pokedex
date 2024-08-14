@@ -1,10 +1,20 @@
-# Getting Started with Create React App
+# Pokédex App
+Pokedex is an application where the user can view a list of Pokémon, search and view the details of a specific Pokémon, and collect them.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## In order to run the project locally
+* Pre-requisites: NodeJS v20.11.1
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) template TypeScript.
+Material UI and React Hot Toast libraries are also used.
 
-In the project directory, you can run:
+### Running
+* clone the repo
+* npm i
+* npm run start
+* go to localhost:3000
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm start`
 
