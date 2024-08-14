@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import {
   Typography,
+  Button,
 } from '@mui/material';
 import { AppContext } from "../../AppContext";
 import { toFirstCharUppercase } from "./../../helpers";
@@ -31,10 +32,11 @@ const useStyles = makeStyles(() => ({
 
 interface Props {
   pokemonId: number
+  handleCatch: (idx: number) => void
   handleOpenModal: (idx: number) => void
 }
 
-export const PokemonCard = ({ pokemonId, handleOpenModal }: Props) => {
+export const PokemonCard = ({ pokemonId, handleCatch, handleOpenModal }: Props) => {
   const context = useContext(AppContext);
   const classes = useStyles();
 
@@ -53,6 +55,13 @@ export const PokemonCard = ({ pokemonId, handleOpenModal }: Props) => {
         />
         <CardContent className={classes.cardContent}>
           <Typography>{`${toFirstCharUppercase(name)}`}</Typography>
+          <Button
+            size="small"
+            variant="contained"
+            onClick={() => handleCatch(pokemonId)}
+          >
+            Catch!
+          </Button>
         </CardContent>{" "}
       </Card>
     </Grid>

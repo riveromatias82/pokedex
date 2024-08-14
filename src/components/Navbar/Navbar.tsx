@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import {
   AppBar,
   InputBase,
+  Toolbar,
   makeStyles,
   fade,
 } from "@material-ui/core";
 import {
   Stack,
-  Toolbar,
 } from '@mui/material';
 import { Search as SearchIcon } from "@mui/icons-material";
 import { AppContext } from "../../AppContext";
@@ -79,8 +79,8 @@ export const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Toolbar sx={{ justifyContent: "space-around" }}>
-        <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 1, sm: 2 }} justifyContent="space-between" ml={2} mr={2} p={2}>
+      <Toolbar>
+        <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 1, sm: 2 }} justifyContent="space-between" ml={2} mr={4} p={2}>
           <img src={PokemonLogo} style={{ height: 48, width: 'auto', maxWidth: '100%', objectFit: 'contain' }} />
           <div className={classes.searchContainer}>
             <div className={classes.searchIcon}>

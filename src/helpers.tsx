@@ -1,3 +1,10 @@
+import toast from "react-hot-toast";
+
+export const toastAlert = (msg: string, alert: 'error' | 'success') =>
+  toast[alert](msg, {
+    position: "top-right",
+});
+
 export const toFirstCharUppercase = (name: string) => name.charAt(0).toUpperCase() + name.slice(1);
 
 export const colorTypes = {

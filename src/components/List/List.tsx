@@ -11,7 +11,7 @@ import {
   Button,
   Box,
 } from '@mui/material';
-import { toFirstCharUppercase, colorTypes } from "./../../helpers";
+import { toFirstCharUppercase, colorTypes, toastAlert } from "./../../helpers";
 import { Pokemon } from "./../../types";
 import { AppContext } from "./../../AppContext";
 import { PokemonCard } from "../../components/Card/Card";
@@ -120,6 +120,13 @@ const PokemonList = () => {
     setOpenModal(false);
   };
 
+  const handleCatch = (idx: number) => {
+    const newPokemon = context.pokemonData.find(pokemon => pokemon.id === idx) as Pokemon
+    context.setPokemonCollection([...context.pokemonCollection, newPokemon])
+    localStorage.setItem("pokemonCollection", JSON.stringify([...context.pokemonCollection, newPokemon]));
+    toastAlert("Catched!", "success");
+  };
+
   interface Props {
     types: Type[]
   }
@@ -145,7 +152,7 @@ const PokemonList = () => {
     )
   };
 
-  const currentPoquemon = context.pokemonData.find(pokemon => pokemon.id === currentIdx);
+  const currentPokemon = context.pokemonData.find(pokemon => pokemon.id === currentIdx);
 
   return (
     <>
@@ -157,6 +164,7 @@ const PokemonList = () => {
               key={index}
               pokemonId={pokemon.id}
               handleOpenModal={handleOpenModal}
+              handleCatch={handleCatch}
             />
           ))}
         </Grid>
@@ -170,11 +178,11 @@ const PokemonList = () => {
         <Modal open={openModal} onClose={handleCloseModal}>
           <>
             <div style={modalStyle} className={classes.paper}>
-              {currentPoquemon && (
+              {currentPokemon && (
                 <>
-                <img src={currentPoquemon.image} alt={currentPoquemon.image} style={{ width: '100%', 'objectFit': 'contain' }}/>
-                <Typography>{`${toFirstCharUppercase(currentPoquemon.name)}`}</Typography>
-                <Types types={currentPoquemon.types} />
+                <img src={currentPokemon.image} alt={currentPokemon.image} style={{ width: '100%', 'objectFit': 'contain' }}/>
+                <Typography>{`${toFirstCharUppercase(currentPokemon.name)}`}</Typography>
+                <Types types={currentPokemon.types} />
                 </>
               )}
             </div>
